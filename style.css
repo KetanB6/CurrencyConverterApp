@@ -1,0 +1,209 @@
+body{
+    background-image: url("images/flags.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    font-family: verdana;
+}
+
+.overlay {
+    background-color: rgba(141, 139, 139, 0.3); /* semi-transparent */
+    backdrop-filter: blur(8px);
+    height: 100vh;
+    margin: -10px -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.calculator{
+    background-color: rgba(8, 8, 8, 0.3);
+    width: 50vw;
+    height: 70%;
+    border-radius: 10px;
+}
+
+h2{
+    position: fixed;
+    top: 10px;
+    color:rgb(202, 206, 209);
+}
+
+.country_flags{
+    width: 40vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flags{
+    width: 4vw;
+    height: 4vw;
+    border-radius: 1px solid #ccc;
+    background-color: antiquewhite;
+    border-radius: 50%;
+}
+
+#arrow_sign{
+    height: 5vw;
+    width: 17vw;
+}
+
+.currencies{
+    width: 40vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8vw;
+    flex-wrap: wrap;
+}
+
+select, input, #value2{
+    width: 12vw;
+    height: 3vw;
+    background-color: rgba(66, 48, 48, 0.3);
+    color: #ccc;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+input, #value2{
+    background-color: rgba(118, 115, 115, 0.3);
+    width: 10vw;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+option{
+    background-color: transparent;
+    color: black;
+}
+
+.convert{
+    padding: 8px 15px 8px 15px;
+    border: 0px #ccc solid;
+    background-color: rgb(43, 111, 238);
+    border-radius: 4px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.values{
+    gap: 10vw;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+.loader1{
+	border-radius: 50%;
+	animation: myAnime1 1s ease-in-out 0s infinite alternate; 
+}
+
+@keyframes myAnime1 {
+	from{}to{
+		transform: translateX(90vh);
+	}
+}
+
+.loader2{
+	border-radius: 50%;
+	animation: myAnime2 1s ease-in-out 0s infinite alternate;
+}
+
+@keyframes myAnime2 {
+	from{}to{
+		transform: translateX(-85vh);
+	}
+}
+
+.main_loader{
+	visibility: hidden;
+	position: fixed;
+	display: flex;
+	align-items: centre;
+	justify-content: centre;
+	width: 100%;
+	height: 20%;
+	gap: 67vh;
+}
+
+@media (max-width: 768px){
+	
+	.calculator{
+		width: 35vh;
+    	height: 60%;
+	}
+	
+	h2{
+		top: 6vh;
+	}
+	
+	select, input, #value2{
+	    width: 19vh;
+	    height: 3vh;
+	    background-color: rgba(66, 48, 48, 0.3);
+	    color: #ccc;
+	    border: 1px solid #ccc;
+	    border-radius: 7px;
+	    font-size: 15px;
+	}
+	
+	.flags{
+	    width: 10vw;
+	    height: 10vw;
+	    border-radius: 1px solid #ccc;
+	    background-color: antiquewhite;
+	    border-radius: 50%;
+	}
+	
+
+	input, #value2{
+	    background-color: rgba(118, 115, 115, 0.3);
+	    width: 12vw;
+	    font-weight: 700;
+	    font-size: 21px;
+	    display:flex;
+	    flex-wrap:wrap;
+	}
+	
+	.c1{
+		position:relative;
+		top:-6.8vh;
+		width: 15vh;
+	}
+	
+	#value2, input{
+		position:relative;
+		top:  0vh;
+		width: 15vh;
+	}
+	
+	#code1{
+		position: relative;
+		top: 7vh;
+		left: 15vh;
+	}
+	
+	#code2{
+		position: relative;
+		top: 15vh;
+		left: 6vh;
+	}
+	
+}
