@@ -29,6 +29,7 @@ public class CalcServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		double cur1 = Double.parseDouble(request.getParameter("cur1"));
 		String cur1_code = request.getParameter("currency1");
 		String cur2_code = request.getParameter("currency2");
@@ -37,7 +38,8 @@ public class CalcServlet extends HttpServlet {
 		System.out.println("from: " + cur1_code);
 		System.out.println("to: " + cur2_code);
 		double rate = currencyRate(cur1_code, cur2_code);
-		double convertedAmount;
+		double convertedAmount = 0;
+	
 		convertedAmount = cur1 * rate;
 		System.out.println(rate);
 		request.setAttribute("cur2", Math.floor(convertedAmount * 100)/100.0);
@@ -49,6 +51,11 @@ public class CalcServlet extends HttpServlet {
 		System.out.println(flag1 + " & " + flag2);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
+		} catch(IOException e) {
+			System.out.println("API/ Connection error!");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	
@@ -57,13 +64,16 @@ public class CalcServlet extends HttpServlet {
 	}
 	
 	public double currencyRate(String fromCurrency, String toCurrency) throws IOException {
-		String apiKey = "5e4992315577297e27a79f19"; 
+		String apiKey = System.getenv("EXCHANGE_API_KEY"); 
 
+		System.out.println("API Key loaded: " + apiKey);
 		URI uri = URI.create("https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + fromCurrency.toUpperCase());
 	    URL url = uri.toURL();
 	    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	    conn.setRequestMethod("GET");
 
+	    conn.setConnectTimeout(5000);
+	    conn.setReadTimeout(5000);
 	    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 	    StringBuilder jsonResponse = new StringBuilder();
 	    String inputLine;
