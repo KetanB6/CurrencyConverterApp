@@ -5,7 +5,7 @@ FROM tomcat:10.1-jdk17
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy WAR file as ROOT.war (autodeploys to /)
-COPY ROOT.war /usr/local/tomcat/webapps/CCA.war
+COPY CCA.war /usr/local/tomcat/webapps/CCA.war
 
 # Expose port 8080
 EXPOSE 8080
